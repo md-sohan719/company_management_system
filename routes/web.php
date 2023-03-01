@@ -22,7 +22,11 @@ Route::get('/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Admin all Route
+Route::controller(AdminController::class)->middleware('auth')->group(function () {
+    Route::get('/logout', 'destroy')->name('admin.logout');
+    Route::get('/admin/profile', 'profile')->name('admin.profile');
+    Route::post('/admin/updateProfile', 'updateProfile')->name('admin.updateProfile');
+});
 
-// logout
-Route::get('/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 require __DIR__ . '/auth.php';

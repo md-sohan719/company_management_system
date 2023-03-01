@@ -4,9 +4,9 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard | Upcube - Admin & Dashboard Template</title>
+    <title>Dashboard | Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Company Mangement System" name="description" />
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
@@ -30,7 +30,8 @@
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-
+    <!-- toastr-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 </head>
 
 <body data-topbar="dark">
@@ -95,13 +96,14 @@
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="rounded-circle header-profile-user"
-                                src="{{ asset('backend/assets/images/users/avatar-1.jpg') }}" alt="Header Avatar">
-                            <span class="d-none d-xl-inline-block ms-1">Julia</span>
+                                src="{{ asset('backend/assets/images/users/user.png') }}" alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }}</span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="ri-user-line align-middle me-1"></i>
+                            <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
+                                    class="ri-user-line align-middle me-1"></i>
                                 Profile</a>
                             <a class="dropdown-item" href="#"><i class="ri-wallet-2-line align-middle me-1"></i>
                                 My Wallet</a>
@@ -163,7 +165,8 @@
     <script src="{{ asset('backend/assets/libs/metismenu/metisMenu.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
-
+    <!-- toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <!-- apexcharts -->
     <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
@@ -187,6 +190,29 @@
 
     <!-- App js -->
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+    <!-- toastr -->
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break;
+            }
+        @endif
+    </script>
 </body>
 
 </html>
