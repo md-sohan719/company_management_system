@@ -36,8 +36,6 @@ class AdminController extends Controller
         return back()->with($notification);
     }
 
-
-
     public function changePassword()
     {
         return view('admin.change_password');
@@ -64,17 +62,6 @@ class AdminController extends Controller
             return back();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
     public function destroy(Request $request)
     {
