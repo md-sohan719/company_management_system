@@ -27,6 +27,8 @@ Route::controller(AdminController::class)->middleware('auth')->group(function ()
     Route::get('/logout', 'destroy')->name('admin.logout');
     Route::get('/admin/profile', 'profile')->name('admin.profile');
     Route::post('/admin/updateProfile', 'updateProfile')->name('admin.updateProfile');
+    Route::get('/change/password', 'changePassword')->name('change.password');
+    Route::post('/update/password', 'updatePassword')->name('update.password');
 });
 
 require __DIR__ . '/auth.php';
