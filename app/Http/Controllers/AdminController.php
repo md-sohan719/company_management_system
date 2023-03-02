@@ -37,6 +37,7 @@ class AdminController extends Controller
     }
 
 
+
     public function changePassword()
     {
         return view('admin.change_password');
@@ -49,7 +50,9 @@ class AdminController extends Controller
             'newPassword' => 'required',
             'confirm_password' => 'required|same:newPassword',
         ]);
+
         $hashedPassword = Auth::user()->password;
+
         if (Hash::check($request->oldPassword, $hashedPassword)) {
             $user = User::find(Auth::id());
             $user->password = bcrypt($request->newPassword);
@@ -61,6 +64,17 @@ class AdminController extends Controller
             return back();
         }
     }
+
+
+
+
+
+
+
+
+
+
+
 
     public function destroy(Request $request)
     {
