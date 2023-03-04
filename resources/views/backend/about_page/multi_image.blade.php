@@ -11,7 +11,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Image</label>
                                 <div class="col-sm-10">
-                                    <input type="file" name="image_path[]" class="form-control"
+                                    <input type="file" name="multi_image[]" class="form-control"
                                         onchange="showSlideImg.src=window.URL.createObjectURL(this.files[0])" multiple>
                                 </div>
                             </div>
