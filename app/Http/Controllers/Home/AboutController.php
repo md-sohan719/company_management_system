@@ -80,6 +80,46 @@ class AboutController extends Controller
             'message' => 'Image created Successfully',
             'alert-type' => 'success'
         );
+        return redirect()->route('all.multi.image')->with($notification);
+    }
+
+    public function AllMultiIMage()
+    {
+        $allMultiImage = MultiImage::all();
+        return view('backend.about_page.all_multi_image', compact('allMultiImage'));
+    }
+
+    public function UpdateMultiIMage(Request $request)
+    {
+        $request->validate([
+            'multi_image' => 'required|image',
+        ]);
+
+        $image_id = $request->id;
+        $image = $request->file('multi_image');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('upload/'), $name_gen);
+
+        MultiImage::findOrFail($image_id)->update([
+            'image_path' => $name_gen,
+        ]);
+        $notification = array(
+            'message' => 'Image Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
+    }
+
+    public function DeleteMultiIMage($id)
+    {
+        $multiImg = MultiImage::findOrFail($id);
+        $img = $multiImg->image_path;
+        unlink('upload/' . $img);
+        MultiImage::findOrFail($id)->delete();
+        $notification = array(
+            'message' => 'Image Deleted Successfully',
+            'alert-type' => 'success'
+        );
         return back()->with($notification);
     }
 }
