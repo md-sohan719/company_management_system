@@ -101,5 +101,10 @@ class PortfolioController extends Controller
         );
         return back()->with($notification);
     }
-    // https://fb.watch/j4g7aiPoF9/
+
+    public function PortfolioDetails($id)
+    {
+        $portfolio = Portfolio::findOrFail($id);
+        return view('frontend.portfolio_details', compact('portfolio'));
+    }
 }

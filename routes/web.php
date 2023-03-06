@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 use App\Models\Portfolio;
@@ -57,7 +58,7 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('/home/about', 'HomeAbout')->name('home.about');
 });
 
-// Home Slide all Route
+// portfolio all Route
 Route::controller(PortfolioController::class)->middleware('auth')->group(function () {
     Route::get('/all/portfolio', 'AllPortfolio')->name('all.portfolio');
     Route::get('/add/portfolio', 'AddPortfolio')->name('add.portfolio');
@@ -65,6 +66,19 @@ Route::controller(PortfolioController::class)->middleware('auth')->group(functio
     Route::get('/edit/portfolio/{id}', 'EditPortfolio')->name('edit.portfolio');
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
+});
+
+// portfolio frontend all Route
+Route::controller(PortfolioController::class)->group(function () {
+    Route::get('/portfolio/details/{id}', 'PortfolioDetails')->name('portfolio.details');
+});
+
+// blog category all Route
+Route::controller(BlogCategoryController::class)->middleware('auth')->group(function () {
+    Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+    Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+    Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
 });
 
 require __DIR__ . '/auth.php';

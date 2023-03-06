@@ -338,9 +338,10 @@
                                         <div class="portfolio__overlay__content">
                                             <span>{{ $portfolio->portfolio_name }}</span>
                                             <h4 class="title"><a
-                                                    href="portfolio-details.html">{{ $portfolio->portfolio_title }}</a>
+                                                    href="{{ route('portfolio.details', $portfolio->id) }} ">{{ $portfolio->portfolio_title }}</a>
                                             </h4>
-                                            <a href="portfolio-details.html" class="link">Case Study</a>
+                                            <a href="{{ route('portfolio.details', $portfolio->id) }} "
+                                                class="link">Case Study</a>
                                         </div>
                                     </div>
                                 @endforeach
