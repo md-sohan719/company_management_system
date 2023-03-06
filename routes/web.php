@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\PortfolioController;
+use App\Models\Portfolio;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,12 +45,26 @@ Route::controller(HomeSliderController::class)->middleware('auth')->group(functi
 Route::controller(AboutController::class)->middleware('auth')->group(function () {
     Route::get('/about/page', 'AboutPage')->name('about.page');
     Route::post('/about/update', 'UpdateAbout')->name('update.about');
-    Route::get('/home/about', 'HomeAbout')->name('home.about');
     Route::get('/about/multi/image', 'AboutMultiIMage')->name('about.multi.image');
     Route::post('/store/multi/image', 'StoreMultiIMage')->name('store.multi.image');
     Route::get('/all/multi/image', 'AllMultiIMage')->name('all.multi.image');
     Route::post('/update/multi/image', 'UpdateMultiIMage')->name('update.multi.image');
     Route::get('/delete/multi/image/{id}', 'DeleteMultiIMage')->name('delete.multi.image');
+});
+
+// Home Slide frontend all Route
+Route::controller(AboutController::class)->group(function () {
+    Route::get('/home/about', 'HomeAbout')->name('home.about');
+});
+
+// Home Slide all Route
+Route::controller(PortfolioController::class)->middleware('auth')->group(function () {
+    Route::get('/all/portfolio', 'AllPortfolio')->name('all.portfolio');
+    Route::get('/add/portfolio', 'AddPortfolio')->name('add.portfolio');
+    Route::post('/store/portfolio', 'StorePortfolio')->name('store.portfolio');
+    Route::get('/edit/portfolio/{id}', 'EditPortfolio')->name('edit.portfolio');
+    Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
+    Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
 });
 
 require __DIR__ . '/auth.php';
