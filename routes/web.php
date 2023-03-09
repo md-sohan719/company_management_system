@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\BlogCategoryController;
 use App\Http\Controllers\Home\BlogController;
+use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 use App\Models\Portfolio;
@@ -90,6 +91,19 @@ Route::controller(BlogController::class)->middleware('auth')->group(function () 
     Route::get('/edit/blog/{id}', 'EditBlog')->name('edit.blog');
     Route::post('/update/blog', 'UpdateBlog')->name('update.blog');
     Route::get('/delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
+});
+
+// blog frontend all Route
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
+    Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.blog');
+    Route::get('/blog', 'HomeBlog')->name('home.blog');
+});
+
+// footer all Route
+Route::controller(FooterController::class)->middleware('auth')->group(function () {
+    Route::get('/footer/setup', 'FooterSetup')->name('footer.setup');
+    Route::post('/update/footer', 'UpdateFooter')->name('update.footer');
 });
 
 require __DIR__ . '/auth.php';
