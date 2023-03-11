@@ -17,9 +17,6 @@ class BlogCategoryController extends Controller
 
     public function StoreBlogCategory(Request $request)
     {
-        $request->validate([
-            'blog_category' => 'required'
-        ]);
         BlogCategory::insert([
             'blog_category' => $request->blog_category,
             'created_at' => Carbon::now('Asia/Dhaka'),

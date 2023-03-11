@@ -58,15 +58,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Add Blog Category</h4>
-                        <form action="{{ route('store.blog.category') }}" method="POST" enctype="multipart/form-data">
+                        <form id="myForm" action="{{ route('store.blog.category') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Blog Category Name</label>
-                                <div class="col-sm-10">
+                                <div class="form-group col-sm-10">
                                     <input type="text" name="blog_category" class="form-control">
-                                    @error('blog_category')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
                             </div>
                             <input type="submit" class="btn btn-info waves-effect waves-light" value="Submit">
@@ -106,9 +104,61 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
     <!-- JAVASCRIPT -->
     <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#myForm').validate({
+                rules: {
+                    blog_category: {
+                        required: true,
+                        minlength: 2
+                    },
+                    // password: {
+                    //     required: true,
+                    //     minlength: 5
+                    // },
+                    // confirm_password: {
+                    //     required: true,
+                    //     minlength: 5,
+                    //     equalTo: "#password"
+                    // },
+                    // email: {
+                    //     required: true,
+                    //     email: true
+                    // },
+                    agree: "required"
+                },
+                messages: {
+                    blog_category: {
+                        required: 'Please Enter Blog Category',
+                    },
+                    // password: {
+                    //     required: " Please enter a password",
+                    //     minlength: " Your password must be consist of at least 5 characters"
+                    // },
+                    // confirm_password: {
+                    //     required: " Please enter a password",
+                    //     minlength: " Your password must be consist of at least 5 characters",
+                    //     equalTo: " Please enter the same password as above"
+                    // },
+                    agree: "Please accept our policy"
+                },
+                errorElement: 'span',
+                errorPlacement: function(error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function(element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function(element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
+
     <script>
         $(document).ready(function() {
             $(".editBtn").click(function() {

@@ -233,6 +233,9 @@
     <script src="{{ asset('backend/assets/js/code.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.6.0/bootstrap-tagsinput.min.js"></script>
+
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script> --}}
 </body>
 
 </html>
