@@ -14,13 +14,17 @@
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                    <li><a href="{{ route('home.about') }}">About</a></li>
+                                    <li class="{{ active_nav('home') }}"><a href="{{ url('/') }}">Home</a></li>
+                                    <li class="{{ active_nav('home.about') }}"><a
+                                            href="{{ route('home.about') }}">About</a></li>
                                     <li><a href="services-details.html">Services</a></li>
-                                    <li><a href="{{ route('home.portfolio') }}">Portfolio</a></li>
-                                    <li><a href="{{ route('home.blog') }}">Our Blog</a>
+                                    <li class="{{ active_nav('home.portfolio') }}"><a
+                                            href="{{ route('home.portfolio') }}">Portfolio</a></li>
+                                    <li class="{{ active_nav('home.blog') }}"><a href="{{ route('home.blog') }}">Our
+                                            Blog</a>
                                     </li>
-                                    <li><a href="{{ route('contact.me') }}">contact me</a></li>
+                                    <li class="{{ active_nav('contact.me') }}"><a
+                                            href="{{ route('contact.me') }}">contact me</a></li>
                                 </ul>
                             </div>
                             <div class="header__btn d-none d-md-block">
@@ -34,9 +38,11 @@
                             <div class="close__btn"><i class="fal fa-times"></i></div>
                             <div class="nav-logo">
                                 <a href="index.html" class="logo__black"><img
-                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                        src="{{ asset('frontend/assets/img/logo/logo_black.png') }}"
+                                        alt=""></a>
                                 <a href="index.html" class="logo__white"><img
-                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}"
+                                        alt=""></a>
                             </div>
                             <div class="menu__outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->

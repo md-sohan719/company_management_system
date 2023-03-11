@@ -8,7 +8,6 @@ use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\FooterController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
-use App\Models\Portfolio;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend.index');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
