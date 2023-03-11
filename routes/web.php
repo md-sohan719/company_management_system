@@ -73,6 +73,7 @@ Route::controller(PortfolioController::class)->middleware('auth')->group(functio
 
 // portfolio frontend all Route
 Route::controller(PortfolioController::class)->group(function () {
+    Route::get('/home/portfolio', 'HomePortfolio')->name('home.portfolio');
     Route::get('/portfolio/details/{id}', 'PortfolioDetails')->name('portfolio.details');
 });
 

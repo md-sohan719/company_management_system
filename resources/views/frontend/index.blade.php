@@ -1,4 +1,9 @@
 @extends('frontend.main_layout')
+
+@section('title')
+    Home | Easy Learning
+@endsection
+
 @section('main')
     <!-- banner-area -->
     <section class="banner">

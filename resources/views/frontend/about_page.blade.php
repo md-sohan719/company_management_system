@@ -1,4 +1,7 @@
 @extends('frontend.main_layout')
+@section('title')
+    About
+@endsection
 @section('main')
     <!-- breadcrumb-area -->
     <section class="breadcrumb__wrap">
