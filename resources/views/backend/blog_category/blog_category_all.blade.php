@@ -34,11 +34,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php($serial = 1)
 
-                                @foreach ($blogCategory as $item)
+                                @foreach ($blogCategory as $key => $item)
                                     <tr>
-                                        <td>{{ $serial++ }}.</td>
+                                        <td>{{ $key + 1 }}.</td>
                                         <td>{{ $item->blog_category }}</td>
                                         <td>
                                             <a blogCategoryInfo={{ $item }} class="btn btn-info sm editBtn"
@@ -127,22 +126,11 @@
                     //     required: true,
                     //     email: true
                     // },
-                    agree: "required"
                 },
                 messages: {
                     blog_category: {
                         required: 'Please Enter Blog Category',
                     },
-                    // password: {
-                    //     required: " Please enter a password",
-                    //     minlength: " Your password must be consist of at least 5 characters"
-                    // },
-                    // confirm_password: {
-                    //     required: " Please enter a password",
-                    //     minlength: " Your password must be consist of at least 5 characters",
-                    //     equalTo: " Please enter the same password as above"
-                    // },
-                    agree: "Please accept our policy"
                 },
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
