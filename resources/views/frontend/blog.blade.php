@@ -71,9 +71,9 @@
 
 
 
-                    <div class="pagination-wrap">
-                        {{ $allBlogs->links() }}
-                    </div>
+<div class="pagination-wrap">
+    {{ $allBlogs->links() }}
+</div>
 
 
 
