@@ -69,9 +69,14 @@
                         </div>
                     @endforeach
 
+
+
                     <div class="pagination-wrap">
                         {{ $allBlogs->links('pagination::bootstrap-4') }}
                     </div>
+
+
+
                 </div>
                 <div class="col-lg-4">
                     <aside class="blog__sidebar">
