@@ -72,7 +72,7 @@
 
 
 <div class="pagination-wrap">
-    {{ $allBlogs->links() }}
+    {{ $allBlogs->links('pagination::bootstrap-4') }}
 </div>
 
 

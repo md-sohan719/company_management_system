@@ -130,8 +130,6 @@ class BlogController extends Controller
 
     public function HomeBlog()
     {
-        // use Illuminate\Pagination\Paginator;
-        Paginator::useBootstrap();
         $allBlogs = Blog::latest()->paginate(3);
         $categories = BlogCategory::orderBy('blog_category', 'ASC')->get();
         return view('frontend.blog', compact('allBlogs', 'categories'));
